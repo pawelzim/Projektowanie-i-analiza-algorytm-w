@@ -28,6 +28,7 @@ int main() {
 
 	cout << "--------------------" << endl;
 	cout << "Mergesort_b: " << measure_time(start2, stop2) << endl;
+	cout << "--------------------" << endl;
 
 	//clock_t start2 = clock();
 	//quicksort(lista2, 'b');
