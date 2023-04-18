@@ -160,7 +160,7 @@ void quicksort_b(DoublyLinkedList& l1, int left, int right) {
 // ------------mergesort-------------
 
 void mergesort_main(DoublyLinkedList& lista, char c) {
-    if (c != 'a' && c != 'b') {
+    if (c != 'a' && c != 'b' && c != 'c') {
         cout << "mergesort_main error" << endl;
     }
     else {
@@ -182,6 +182,9 @@ void mergesort(DoublyLinkedList& lista, int left, int right, char c) {
     }
     if (c == 'b') {
         merge_b(lista, left, middle, right);
+    }
+    if (c == 'c') {
+        merge_roboczy(lista, left, middle, right);
     }
 }
 
@@ -234,6 +237,69 @@ void merge_a(DoublyLinkedList& lista, int left, int middle, int right) {
     }
 }
 
+void merge_roboczy(DoublyLinkedList& lista, int left, int middle, int right) {
+    int i = 0;
+    int j = ((right - left) / 2) + 1;
+    middle = (right - left) / 2;
+    int right2 = right - left;
+    DoublyLinkedList l1;
+    Node* tmp, * tmp2, * tmpi, * tmpj = nullptr;
+
+    if (left >= lista.size() / 2) {
+        tmp = lista.getFromHead(left);
+        tmp2 = lista.getFromHead(left);
+    }
+    else {
+        tmp = lista.getFromTail(left);
+        tmp2 = lista.getFromTail(left);
+    }
+
+    for (int k = left; k <= right; k++) {
+        l1.newHead(tmp->index, tmp->name, tmp->rate);
+        tmp = tmp->next;
+    }
+
+    tmpi = l1.getFromTail(0);
+    tmpj = l1.getFromTail(j);
+
+   
+    for (int k = left; k <= right; k++) {
+        if (i <= middle) {
+            if (j <= right2) {
+                if (tmpj->rate < tmpi->rate) {
+                    tmp2->index = tmpj->index;
+                    tmp2->name = tmpj->name;
+                    tmp2->rate = tmpj->rate;
+                    tmpj = tmpj->next;
+                    j++;
+                }
+                else {
+                    tmp2->index = tmpi->index;
+                    tmp2->name = tmpi->name;
+                    tmp2->rate = tmpi->rate;
+                    tmpi = tmpi->next;
+                    i++;
+                }
+            }
+            else {
+                tmp2->index = tmpi->index;
+                tmp2->name = tmpi->name;
+                tmp2->rate = tmpi->rate;
+                tmpi = tmpi->next;
+                i++;
+            }
+        }
+        else {
+            tmp2->index = tmpj->index;
+            tmp2->name = tmpj->name;
+            tmp2->rate = tmpj->rate;
+            tmpj = tmpj->next;
+            j++;
+        }
+        tmp2 = tmp2->next;
+    }
+}
+
 void merge_b(DoublyLinkedList& lista, int left, int middle, int right) {
     int i = 0;
     int j = ((right - left) / 2) + 1;
@@ -241,6 +307,7 @@ void merge_b(DoublyLinkedList& lista, int left, int middle, int right) {
     int right2 = right - left;
     DoublyLinkedList l1;
     Node* tmp;
+    Node* tmp2;
 
     for (int k = left; k <= right; k++) {
         if (k >= lista.size()/2) {
@@ -251,7 +318,7 @@ void merge_b(DoublyLinkedList& lista, int left, int middle, int right) {
         }
         l1.newHead(tmp->index, tmp->name, tmp->rate);
     }
-
+    
     for (int k = left; k <= right; k++) {
         if (i <= middle) {
             if (j <= right2) {

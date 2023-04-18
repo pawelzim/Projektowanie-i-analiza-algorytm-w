@@ -11,11 +11,16 @@ using namespace std;
 int main() {
 	DoublyLinkedList lista1, lista2;
 
-	assignment(lista1, 400000);
+
+	assignment(lista1, 1000);
 	clock_t start123 = clock();
-	bucketsort(lista1);
+	mergesort_main(lista1, 'c');
 	clock_t stop123 = clock();
-	lista1.display(380000, 380500);
+	lista1.display(900, 930);
+	
+	//bucketsort(lista1);
+
+	//lista1.display(380000, 380500);
 	cout << measure_time(start123, stop123) << endl;
 
 	//assignment(lista2, 50000);

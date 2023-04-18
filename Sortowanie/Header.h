@@ -49,5 +49,7 @@ void mergesort_main(DoublyLinkedList& lista, char c);
 void mergesort(DoublyLinkedList& lista, int left, int right, char c);
 void merge_a(DoublyLinkedList& lista, int left, int middle, int right);
 void merge_b(DoublyLinkedList& lista, int left, int middle, int right);
+void merge_roboczy(DoublyLinkedList& lista, int left, int middle, int right);
+
 
 void bucketsort(DoublyLinkedList& lista);
