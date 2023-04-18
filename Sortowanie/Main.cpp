@@ -11,24 +11,30 @@ using namespace std;
 int main() {
 	DoublyLinkedList lista1, lista2;
 
-	assignment(lista1, 100000);
-	assignment(lista2, 50000);
+	assignment(lista1, 400000);
+	clock_t start123 = clock();
+	bucketsort(lista1);
+	clock_t stop123 = clock();
+	lista1.display(380000, 380500);
+	cout << measure_time(start123, stop123) << endl;
+
+	//assignment(lista2, 50000);
 
 
 	//clock_t start1 = clock();
 	//mergesort_main(lista1, 'a');
 	//clock_t stop1 = clock();
 
-	clock_t start2 = clock();
+	/*clock_t start2 = clock();
 	mergesort_main(lista2, 'b');
-	clock_t stop2 = clock();
+	clock_t stop2 = clock();*/
 
 	//cout << "--------------------" << endl;
 	//cout << "Mergesort_a: " << measure_time(start1, stop1) << endl;
 
-	cout << "--------------------" << endl;
-	cout << "Mergesort_b: " << measure_time(start2, stop2) << endl;
-	cout << "--------------------" << endl;
+	//cout << "--------------------" << endl;
+	//cout << "Mergesort_b: " << measure_time(start2, stop2) << endl;
+	//cout << "--------------------" << endl;
 
 	//clock_t start2 = clock();
 	//quicksort(lista2, 'b');

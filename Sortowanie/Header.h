@@ -10,6 +10,12 @@ struct Node {
 	float rate;
 	Node* next;
 	Node* previous;
+	Node() {
+		index = 0;
+		rate = 0;
+		next = nullptr;
+		previous = nullptr;
+	}
 };
 
 class DoublyLinkedList {
@@ -43,3 +49,5 @@ void mergesort_main(DoublyLinkedList& lista, char c);
 void mergesort(DoublyLinkedList& lista, int left, int right, char c);
 void merge_a(DoublyLinkedList& lista, int left, int middle, int right);
 void merge_b(DoublyLinkedList& lista, int left, int middle, int right);
+
+void bucketsort(DoublyLinkedList& lista);

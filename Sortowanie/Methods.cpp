@@ -396,61 +396,27 @@ void merge_b(DoublyLinkedList& lista, int left, int middle, int right) {
     }
 }
 
+// -------------bucketsort--------------
 
-//void merge(DoublyLinkedList& lista, int left, int middle, int right) {
-//    int pom1 = middle - left + 1;
-//    int pom2 = right - middle;
-//
-//    DoublyLinkedList l1, l2;
-//
-//    for (int i = 0; i < pom1; i++) {
-//        l1.newHead(lista.getFromTail(left + i)->index, lista.getFromTail(left + i)->name, lista.getFromTail(left + i)->rate);
-//    }
-//    for (int i = 0; i < pom2; i++) {
-//        l2.newHead(lista.getFromTail(middle + 1 + i)->index, lista.getFromTail(middle + 1 + i)->name, lista.getFromTail(middle + 1 + i)->rate);
-//    }
-//
-//    int a = 0, b = 0, c = left;
-//
-//    while (a < pom1 && b < pom2) {
-//        if (l1.getFromTail(a)->rate <= l1.getFromTail(b)->rate) {
-//            lista.getFromTail(c)->index = l1.getFromTail(a)->index;
-//            lista.getFromTail(c)->name = l1.getFromTail(a)->name;
-//            lista.getFromTail(c)->rate = l1.getFromTail(a)->rate;
-//            a++;
-//        }
-//        else {
-//            lista.getFromTail(c)->index = l2.getFromTail(b)->index;
-//            lista.getFromTail(c)->name = l2.getFromTail(b)->name;
-//            lista.getFromTail(c)->rate = l2.getFromTail(b)->rate;
-//            b++;
-//        }
-//        c++;
-//    }
-//    while (a < pom1) {
-//        lista.getFromTail(c)->index = l1.getFromTail(a)->index;
-//        lista.getFromTail(c)->name = l1.getFromTail(a)->name;
-//        lista.getFromTail(c)->rate = l1.getFromTail(a)->rate;
-//        a++;
-//        c++;
-//    }
-//    while (b < pom2) {
-//        lista.getFromTail(c)->index = l2.getFromTail(b)->index;
-//        lista.getFromTail(c)->name = l2.getFromTail(b)->name;
-//        lista.getFromTail(c)->rate = l2.getFromTail(b)->rate;
-//        b++;
-//        c++;
-//    }
-//}
-//
-//void mergesort(DoublyLinkedList &lista, int left, int right) {
-//    if (left >= right) {
-//        cout << "Mergesort" << endl;
-//        return;
-//    }
-//
-//    int middle = left + (right - left) / 2;
-//    mergesort(lista, left, middle);
-//    mergesort(lista, middle + 1, right);
-//    merge(lista, left, middle, right);
-//}
+void bucketsort(DoublyLinkedList& lista) {
+    DoublyLinkedList l[10];
+    int ctr = 0;
+    Node* tmp = lista.getFromTail(0);
+    for (int i = 0; i < lista.size(); i++) {
+        ctr = (int)tmp->rate - 1;
+        l[ctr].newHead(tmp->index, tmp->name, tmp->rate);
+        tmp = tmp->next;
+    }
+    Node* tmp2 = lista.getFromTail(0);
+
+    for (int i = 0; i < 10; i++) {
+        tmp = l[i].getFromTail(0);
+        for (int k = 0; k < l[i].size(); k++) {
+            tmp2->index = tmp->index;
+            tmp2->name = tmp->name;
+            tmp2->rate = tmp->rate;
+            tmp2 = tmp2->next;
+            tmp = tmp->next;
+        }
+    }
+}
