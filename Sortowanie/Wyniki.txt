@@ -1,0 +1,2 @@
+Mergesort dla 4000 elementów: 0.1
+Bucketsort dla 236302 elementów: 0.375 s

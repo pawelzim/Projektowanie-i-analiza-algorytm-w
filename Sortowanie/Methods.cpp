@@ -58,7 +58,26 @@ void assignment(DoublyLinkedList &lista, int limit) {
     file.close();
 }
 
-double measure_time(clock_t strt, clock_t stp) {
+double measure_time(clock_t strt, clock_t stp, int n, char c) {
+    fstream file;
+    file.open("Wyniki.txt", ios::out | ios::app);
+    if (!(file.good())) {
+        cout << "Error opening file (wyniki.txt)" << endl;
+        return static_cast<double>(stp - strt) / CLOCKS_PER_SEC;
+    }
+    if (c == 'q') {
+        file << "Quicksort dla " << n << " elementów: " << static_cast<double>(stp - strt) / CLOCKS_PER_SEC << " s" << endl;
+    }
+    else if (c == 'm') {
+        file << "Mergesort dla " << n << " elementów: " << static_cast<double>(stp - strt) / CLOCKS_PER_SEC << " s" << endl;
+    }
+    else if (c == 'b') {
+        file << "Bucketsort dla " << n << " elementów: " << static_cast<double>(stp - strt) / CLOCKS_PER_SEC << " s" << endl;
+    }
+    else {
+        cout << "Error measure time char" << endl;
+    }
+    file.close();
     return static_cast<double>(stp - strt) / CLOCKS_PER_SEC;
 }
 

@@ -33,7 +33,7 @@ public:
 };
 
 void assignment(DoublyLinkedList &lista, int limit);
-double measure_time(clock_t strt, clock_t stp);
+double measure_time(clock_t strt, clock_t stp, int n, char c);
 
 void quicksort(DoublyLinkedList& lista, char c);
 void quicksort_a(DoublyLinkedList &l1, int left, int right);
