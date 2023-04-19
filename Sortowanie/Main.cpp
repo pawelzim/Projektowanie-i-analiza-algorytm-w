@@ -11,12 +11,13 @@ using namespace std;
 int main() {
 	DoublyLinkedList lista1, lista2;
 
-
-	assignment(lista1, 1000);
+	// dla 20k elementow: 0.834, 0.796, 0.893
+	// dla 35k elementow: 2.206, 2.283, 2.255
+	assignment(lista1, 200000);
 	clock_t start123 = clock();
 	mergesort_main(lista1, 'c');
 	clock_t stop123 = clock();
-	lista1.display(900, 930);
+	//lista1.display(25000, 25300);
 	
 	//bucketsort(lista1);
 

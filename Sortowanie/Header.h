@@ -10,12 +10,6 @@ struct Node {
 	float rate;
 	Node* next;
 	Node* previous;
-	Node() {
-		index = 0;
-		rate = 0;
-		next = nullptr;
-		previous = nullptr;
-	}
 };
 
 class DoublyLinkedList {

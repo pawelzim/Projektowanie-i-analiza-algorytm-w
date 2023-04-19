@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <ctime>
 #include "Header.h"
 
 using namespace std;
@@ -61,7 +62,7 @@ double measure_time(clock_t strt, clock_t stp) {
     return static_cast<double>(stp - strt) / CLOCKS_PER_SEC;
 }
 
-// ------------SORTOWANIA------------
+// ############SORTOWANIA############
 
 // ------------quicksort-------------
 
@@ -238,31 +239,37 @@ void merge_a(DoublyLinkedList& lista, int left, int middle, int right) {
 }
 
 void merge_roboczy(DoublyLinkedList& lista, int left, int middle, int right) {
-    int i = 0;
+    int i = 0, p = 0;
     int j = ((right - left) / 2) + 1;
     middle = (right - left) / 2;
     int right2 = right - left;
     DoublyLinkedList l1;
-    Node* tmp, * tmp2, * tmpi, * tmpj = nullptr;
+    Node* tmp, * tmp2, * tmpi = nullptr, * tmpj = nullptr;
 
     if (left >= lista.size() / 2) {
         tmp = lista.getFromHead(left);
-        tmp2 = lista.getFromHead(left);
+        tmp2 = tmp;
     }
     else {
         tmp = lista.getFromTail(left);
-        tmp2 = lista.getFromTail(left);
+        tmp2 = tmp;
     }
 
     for (int k = left; k <= right; k++) {
         l1.newHead(tmp->index, tmp->name, tmp->rate);
+        if (j == p) {
+            tmpj = tmp;
+        }
+        //if (i == p) {
+        //    tmpi = tmp;
+        //}
+        p++;
         tmp = tmp->next;
     }
 
     tmpi = l1.getFromTail(0);
-    tmpj = l1.getFromTail(j);
+    //tmpj = l1.getFromTail(j);
 
-   
     for (int k = left; k <= right; k++) {
         if (i <= middle) {
             if (j <= right2) {
