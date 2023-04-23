@@ -34,16 +34,14 @@ public:
 
 void assignment(DoublyLinkedList &lista, int limit);
 double measure_time(clock_t strt, clock_t stp, int n, char c);
+void checkList(DoublyLinkedList& lista);
 
 void quicksort(DoublyLinkedList& lista, char c);
 void quicksort_a(DoublyLinkedList &l1, int left, int right);
 void quicksort_b(DoublyLinkedList &l1, int left, int right);
 
-void mergesort_main(DoublyLinkedList& lista, char c);
-void mergesort(DoublyLinkedList& lista, int left, int right, char c);
-void merge_a(DoublyLinkedList& lista, int left, int middle, int right);
-void merge_b(DoublyLinkedList& lista, int left, int middle, int right);
-void merge_roboczy(DoublyLinkedList& lista, int left, int middle, int right);
-
+void mergesort_main(DoublyLinkedList& lista);
+void mergesort(DoublyLinkedList& lista, int left, int right, Node* tmpl);
+void merge(DoublyLinkedList& lista, int left, int middle, int right, Node* tmpl);
 
 void bucketsort(DoublyLinkedList& lista);
