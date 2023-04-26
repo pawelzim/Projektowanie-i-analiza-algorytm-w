@@ -3,96 +3,33 @@
 
 using namespace std;
 
-void quicksort(DoublyLinkedList& l1, char c) {
-    if (c == 'a') {
-        quicksort_a(l1, 0, l1.size() - 1);
-    }
-    else if (c == 'b') {
-        quicksort_b(l1, 0, l1.size() - 1);
-    }
-    else {
-        cout << "Error quicksort option" << endl;
-    }
-}
+Node* partition(Node* start, Node* end) {
+    int pivot = end->rate;
+    Node* pivotNode = start;
 
-// dla listy jednokierunkowej
-void quicksort_a(DoublyLinkedList& l1, int left, int right) {
-    if (left >= right) {
-        cout << "Error quicksort_a" << endl;
-        return;
-    }
-    Node* tmpl, * tmpr;
-    //tmpl = l1.getPointer(left);
-    //tmpr = l1.getPointer(right);
-//    Node* piv = l1.pivot(tmpl, tmpr);
-    int auxL = left;
-    int auxR = right;
-
-    while (auxL <= auxR) {
-        //while (piv->rate > l1.getPointer(auxL)->rate) auxL++;
-        //while (piv->rate < l1.getPointer(auxR)->rate) auxR--;
-
-        if (auxL <= auxR) {
-            //            l1.swap(l1.getPointer(auxL), l1.getPointer(auxR));
-            auxL++;
-            auxR--;
-        }
-        if (auxL <= auxR) {
-            break;
+    for (Node* i = start; i != end; i = i->next) {
+        if (i->rate <= pivot) {
+            swap(pivotNode->rate, i->rate);
+            pivotNode = pivotNode->next;
         }
     }
 
-    if (auxR > left)
-        quicksort_a(l1, left, auxR);
-    if (auxL < right)
-        quicksort_a(l1, auxL, right);
+    swap(pivotNode->rate, end->rate);
+
+    return pivotNode;
 }
 
-// dla listy dwukierunkowej
-void quicksort_b(DoublyLinkedList& l1, int left, int right) {
-    if (left >= right) {
-        cout << "Error quicksort_b" << endl;
+void quick_sort(Node* start, Node* end) {
+    if (start == NULL || end == NULL || start == end || end->next == start) {
         return;
     }
 
-    int auxL = left;
-    int auxR = right;
-    Node* piv = new Node();
+    Node* pivot = partition(start, end);
 
-    if (auxL > ((l1.size() - 1) / 2)) {
-        piv = l1.pivot(l1.getFromHead(left), l1.getFromHead(right));
-    }
-    else if (auxR < ((l1.size() - 1) / 2)) {
-        piv = l1.pivot(l1.getFromTail(left), l1.getFromTail(right));
-    }
-    else {
-        piv = l1.pivot(l1.getFromTail(left), l1.getFromHead(right));
-    }
+    quick_sort(start, pivot->previous);
+    quick_sort(pivot->next, end);
+}
 
-    while (auxL <= auxR) {
-        while (piv->rate > l1.getFromTail(auxL)->rate) auxL++;
-        while (piv->rate < l1.getFromHead(auxR)->rate) auxR--;
-
-        if (auxL <= auxR) {
-            if (auxL > ((l1.size() - 1) / 2)) {
-                l1.swap(l1.getFromHead(auxL), l1.getFromHead(auxR));
-            }
-            else if (auxR < ((l1.size() - 1) / 2)) {
-                l1.swap(l1.getFromTail(auxL), l1.getFromTail(auxR));
-            }
-            else {
-                l1.swap(l1.getFromTail(auxL), l1.getFromHead(auxR));
-            }
-            auxL++;
-            auxR--;
-        }
-        if (auxL <= auxR) {
-            break;
-        }
-    }
-
-    if (auxR > left)
-        quicksort_b(l1, left, auxR);
-    if (auxL < right)
-        quicksort_b(l1, auxL, right);
+void quicksort(DoublyLinkedList &lista) {
+    quick_sort(lista.getFromTail(0), lista.getFromHead(lista.size() - 1));
 }

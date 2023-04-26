@@ -21,15 +21,17 @@ void assignment(DoublyLinkedList &lista, int limit) {
     float rat;
 
     while (getline(file, line)) {
-        if (i == -1 || i == 186112 || i == 368121 || i == 390575) {
+        if (i == -1 || i == 186112 || i == 368121 || i == 390575 || i == 405365) {
             i++;
             continue;
         }
+
         stringstream ss(line);
         i++;
 
         getline(ss, l1, ',');
         getline(ss, l2, ',');
+
         if (l2[0] == '"') {
             getline(ss, l4, ',');
             while (l4[l4.length()-1] != '"' || count(l4.begin(), l4.end(), '"') % 2 == 0) {
@@ -38,7 +40,9 @@ void assignment(DoublyLinkedList &lista, int limit) {
             }
             l2 = l2 + l4;
         }
+
         getline(ss, l3);
+
         if (l1.empty() || l2.empty() || l3.empty()) {
             continue;
         }

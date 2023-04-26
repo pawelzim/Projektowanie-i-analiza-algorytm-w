@@ -4,64 +4,69 @@
 using namespace std;
 
 void mergesort(DoublyLinkedList& lista) {
-    merge_sort(lista, lista.getFromTail(0), lista.getFromHead(lista.size() - 1));
+    merge_sort(lista.getFromTail(0), lista.getFromHead(lista.size() - 1));
 }
 
-void merge_sort(DoublyLinkedList& dll, Node* left, Node* right) {
+void merge_sort(Node* left, Node* right) {
     if (left == right) {
         return;
     }
 
-    Node* middle = left;
-    Node* end = left;
-    while (end != right && end->next != right) {
-        middle = middle->next;
-        end = end->next->next;
+    Node* start = left;
+    Node* end = right;
+
+    while (start != end && start != end->previous) {
+        start = start->next;
+        end = end->previous;
     }
 
-    merge_sort(dll, left, middle);
-    merge_sort(dll, middle->next, right);
-    merge(dll, left, middle, right);
+    Node* middle = start;
+
+    merge_sort(left, middle);
+    merge_sort(middle->next, right);
+    merge(left, middle, right);
 }
 
-void merge(DoublyLinkedList& dll, Node* left, Node* mid, Node* right) {
-    DoublyLinkedList left_list;
-    DoublyLinkedList right_list;
+void merge(Node* left, Node* middle, Node* right) {
+    DoublyLinkedList l1;
+    DoublyLinkedList l2;
 
-    Node* cur = left;
-    while (cur != mid->next) {
-        left_list.newHead(cur->index, cur->name, cur->rate);
-        cur = cur->next;
+    Node* tmpl = left;
+    while (tmpl != middle->next) {
+        l1.newHead(tmpl->index, tmpl->name, tmpl->rate);
+        tmpl = tmpl->next;
     }
-    while (cur != right->next) {
-        right_list.newHead(cur->index, cur->name, cur->rate);
-        cur = cur->next;
+    while (tmpl != right->next) {
+        l2.newHead(tmpl->index, tmpl->name, tmpl->rate);
+        tmpl = tmpl->next;
     }
 
-    Node* i = left_list.getFromTail(0);
-    Node* j = right_list.getFromTail(0);
-    cur = left;
-    while (i && j) {
-        if (i->rate <= j->rate) {
-            Swap(cur, i);
-            i = i->next;
+    Node* l = l1.getFromTail(0);
+    Node* r = l2.getFromTail(0);
+
+    tmpl = left;
+
+    while (l != nullptr && r != nullptr) {
+        if (l->rate <= r->rate) {
+            Swap(tmpl, l);
+            l = l->next;
         }
         else {
-            Swap(cur, j);
-            j = j->next;
+            Swap(tmpl, r);
+            r = r->next;
         }
-        cur = cur->next;
+        tmpl = tmpl->next;
     }
 
-    while (i) {
-        Swap(cur, i);
-        i = i->next;
-        cur = cur->next;
+    while (l != nullptr) {
+        Swap(tmpl, l);
+        l = l->next;
+        tmpl = tmpl->next;
     }
 
-    while (j) {
-        Swap(cur, j);
-        j = j->next;
-        cur = cur->next;
+    while (r != nullptr) {
+        Swap(tmpl, r);
+        r = r->next;
+        tmpl = tmpl->next;
     }
 }

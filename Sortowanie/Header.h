@@ -30,7 +30,6 @@ public:
 	Node* pivot(Node* til, Node* hed);
 	Node* getFromTail(int x);
 	Node* getFromHead(int x);
-	void swap(Node* tmp1, Node* tmp2);
 	// ###### mergesort ######
 	void mergesort();
 	Node* mergeSort(Node* tmpl, Node* tmpr);
@@ -44,12 +43,12 @@ double measure_time(clock_t strt, clock_t stp, int n, char c);
 void check_list(DoublyLinkedList& lista);
 void Swap(Node* n1, Node* n2);
 
-void quicksort(DoublyLinkedList& lista, char c);
-void quicksort_a(DoublyLinkedList &l1, int left, int right);
-void quicksort_b(DoublyLinkedList &l1, int left, int right);
+void quicksort(DoublyLinkedList& lista);
+Node* partition(Node* start, Node* end);
+void quick_sort();
 
-void merge(DoublyLinkedList& dll, Node* left, Node* mid, Node* right);
-void merge_sort(DoublyLinkedList& dll, Node* left, Node* right);
-void mergesort(DoublyLinkedList& dll);
+void merge(Node* left, Node* middle, Node* right);
+void merge_sort(Node* left, Node* right);
+void mergesort(DoublyLinkedList& lista);
 
 void bucketsort(DoublyLinkedList& lista);
