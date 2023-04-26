@@ -133,6 +133,22 @@ void DoublyLinkedList::swap(Node* n1, Node* n2) {
 	n2->rate = rate1;
 }
 
+Node* DoublyLinkedList::getMiddle(Node* tmpl, Node* tmpr) {
+	if (tmpr == nullptr) {
+		cout << "getMiddle Error" << endl;
+		return nullptr;
+	}
+	Node* tmp1 = tmpl;
+	Node* tmp2 = tmpl;
+
+	while (tmp2 != tmpr && tmp2->next != tmpr) {
+		tmp1 = tmp1->next;
+		tmp2 = tmp2->next->next;
+	}
+	
+	return tmp1;
+}
+
 Node* DoublyLinkedList::pivot(Node* til, Node* hed) {
 	Node* tmp1 = til, * tmp2 = hed;
 	while (tmp1 != tmp2->previous && tmp1 != tmp2) {

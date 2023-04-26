@@ -26,22 +26,30 @@ public:
 	void display(int start, int end);
 	int size();
 	// metody pod sortowanie
-	void swap(Node* n1, Node* n2);
+	Node* getMiddle(Node* tmpl, Node* tmpr);
 	Node* pivot(Node* til, Node* hed);
 	Node* getFromTail(int x);
 	Node* getFromHead(int x);
+	void swap(Node* tmp1, Node* tmp2);
+	// ###### mergesort ######
+	void mergesort();
+	Node* mergeSort(Node* tmpl, Node* tmpr);
+	Node* merge(Node* left, Node* right);
+	Node* split(Node* tmpl, Node* tmpr);
+
 };
 
 void assignment(DoublyLinkedList &lista, int limit);
 double measure_time(clock_t strt, clock_t stp, int n, char c);
-void checkList(DoublyLinkedList& lista);
+void check_list(DoublyLinkedList& lista);
+void Swap(Node* n1, Node* n2);
 
 void quicksort(DoublyLinkedList& lista, char c);
 void quicksort_a(DoublyLinkedList &l1, int left, int right);
 void quicksort_b(DoublyLinkedList &l1, int left, int right);
 
-void mergesort_main(DoublyLinkedList& lista);
-void mergesort(DoublyLinkedList& lista, int left, int right, Node* tmpl);
-void merge(DoublyLinkedList& lista, int left, int middle, int right, Node* tmpl);
+void merge(DoublyLinkedList& dll, Node* left, Node* mid, Node* right);
+void merge_sort(DoublyLinkedList& dll, Node* left, Node* right);
+void mergesort(DoublyLinkedList& dll);
 
 void bucketsort(DoublyLinkedList& lista);

@@ -79,12 +79,12 @@ double measure_time(clock_t strt, clock_t stp, int n, char c) {
     return static_cast<double>(stp - strt) / CLOCKS_PER_SEC;
 }
 
-void checkList(DoublyLinkedList& lista) {
+void check_list(DoublyLinkedList& lista) {
     Node* tmp = lista.getFromTail(0);
     float ctr = 0;
     while (tmp != nullptr) {
         if (ctr > tmp->rate) {
-            cout << "List isn't ok" << endl;
+            cout << "Incorrect order" << endl;
             return;
         }
         if (tmp->rate > ctr) {
@@ -92,5 +92,17 @@ void checkList(DoublyLinkedList& lista) {
         }
         tmp = tmp->next;
     }
-    cout << "List is ok" << endl;
+    cout << "Correct order" << endl;
+}
+
+void Swap(Node* n1, Node* n2) {
+    int index1 = n1->index;
+    string name1 = n1->name;
+    float rate1 = n1->rate;
+    n1->index = n2->index;
+    n1->name = n2->name;
+    n1->rate = n2->rate;
+    n2->index = index1;
+    n2->name = name1;
+    n2->rate = rate1;
 }

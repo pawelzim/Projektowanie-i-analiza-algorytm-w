@@ -1,23 +1,2 @@
-Mergesort dla 4000 elementów: 0.1
-Bucketsort dla 236302 elementów: 0.375 s
-Quicksort dla 20 elementów: 0 s
-Quicksort dla 50 elementów: 0.01 s
-Quicksort dla 50000 elementów: 5.552 s
-Mergesort dla 50 elementów: 0 s
-Mergesort dla 50 elementów: 0 s
-Mergesort dla 1500 elementów: 0.041 s
-Mergesort dla 10000 elementów: 0.338 s
-Mergesort dla 40000 elementów: 3.313 s
-Mergesort dla 40000 elementów: 3.341 s
-Mergesort dla 10000 elementów: 0.288 s
-Mergesort dla 95814 elementów: 22.585 s
-Bucketsort dla 95814 elementów: 0.166 s
-Bucketsort dla 95814 elementów: 0.162 s
-Mergesort dla 100 elementów: 0.002 s
-Mergesort dla 20000 elementów: 1.052 s
-Mergesort dla 20000 elementów: 0.924 s
-Mergesort dla 7 elementów: 0 s
-Mergesort dla 7 elementów: 0.001 s
-Mergesort dla 7 elementów: 0.002 s
-Mergesort dla 7 elementów: 0.003 s
-Mergesort dla 7 elementów: 0.002 s
+Mergesort dla 236302 elementów: 9.359 s
+Mergesort dla 236302 elementów: 9.196 s
