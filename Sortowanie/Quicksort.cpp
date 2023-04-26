@@ -1,7 +1,41 @@
 #include <iostream>
+#include <stack>
 #include "Header.h"
 
 using namespace std;
+
+void quicksort(DoublyLinkedList &lista) {
+    quick_sort(lista.getFromTail(0), lista.getFromHead(lista.size() - 1));
+}
+
+void quick_sort(Node* tmpl, Node* tmpr) {
+    if (tmpl == NULL || tmpr == NULL || tmpl == tmpr || tmpr->next == tmpl) {
+        return;
+    }
+
+    stack<Node*> stack;
+    stack.push(tmpl);
+    stack.push(tmpr);
+
+    while (!stack.empty()) {
+        Node* end = stack.top();
+        stack.pop();
+        Node* start = stack.top();
+        stack.pop();
+
+        if (start == NULL || end == NULL || start == end || end->next == start) {
+            continue;
+        }
+
+        Node* pivot = partition(start, end);
+
+        stack.push(start);
+        stack.push(pivot->previous);
+
+        stack.push(pivot->next);
+        stack.push(end);
+    }
+}
 
 Node* partition(Node* start, Node* end) {
     int pivot = end->rate;
@@ -17,19 +51,4 @@ Node* partition(Node* start, Node* end) {
     swap(pivotNode->rate, end->rate);
 
     return pivotNode;
-}
-
-void quick_sort(Node* start, Node* end) {
-    if (start == NULL || end == NULL || start == end || end->next == start) {
-        return;
-    }
-
-    Node* pivot = partition(start, end);
-
-    quick_sort(start, pivot->previous);
-    quick_sort(pivot->next, end);
-}
-
-void quicksort(DoublyLinkedList &lista) {
-    quick_sort(lista.getFromTail(0), lista.getFromHead(lista.size() - 1));
 }

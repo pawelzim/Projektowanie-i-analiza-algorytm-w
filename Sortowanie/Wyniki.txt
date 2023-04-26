@@ -1,2 +1,48 @@
-Mergesort dla 236302 elementów: 9.359 s
-Mergesort dla 236302 elementów: 9.196 s
+// ----- QUICKSORT -----
+Quicksort dla 10000 elementów: 0.042 s
+Quicksort dla 10000 elementów: 0.037 s
+Quicksort dla 10000 elementów: 0.037 s
+
+Quicksort dla 95814 elementów: 2.858 s
+Quicksort dla 95814 elementów: 2.866 s
+Quicksort dla 95814 elementów: 2.809 s
+
+Quicksort dla 236302 elementów: 24.975 s
+Quicksort dla 236302 elementów: 24.846 s
+Quicksort dla 236302 elementów: 25.42 s
+
+Quicksort dla 385636 elementów: 92.952 s
+Quicksort dla 385636 elementów: 97.665 s
+Quicksort dla 385636 elementów: 89.094 s
+// ----- MERGESORT -----
+Mergesort dla 10000 elementów: 0.32 s
+Mergesort dla 10000 elementów: 0.302 s
+Mergesort dla 10000 elementów: 0.298 s
+
+Mergesort dla 95814 elementów: 3.806 s
+Mergesort dla 95814 elementów: 3.652 s
+Mergesort dla 95814 elementów: 3.701 s
+
+Mergesort dla 236302 elementów: 9.699 s
+Mergesort dla 236302 elementów: 9.938 s
+Mergesort dla 236302 elementów: 9.912 s
+
+Mergesort dla 385636 elementów: 16.649 s
+Mergesort dla 385636 elementów: 17.122 s
+Mergesort dla 385636 elementów: 17.081 s
+// ----- BUCKETSORT -----
+Bucketsort dla 10000 elementów: 0.017 s
+Bucketsort dla 10000 elementów: 0.016 s
+Bucketsort dla 10000 elementów: 0.016 s
+
+Bucketsort dla 95814 elementów: 0.159 s
+Bucketsort dla 95814 elementów: 0.153 s
+Bucketsort dla 95814 elementów: 0.154 s
+
+Bucketsort dla 236302 elementów: 0.382 s
+Bucketsort dla 236302 elementów: 0.384 s
+Bucketsort dla 236302 elementów: 0.383 s
+
+Bucketsort dla 385636 elementów: 0.638 s
+Bucketsort dla 385636 elementów: 0.647 s
+Bucketsort dla 385636 elementów: 0.64 s

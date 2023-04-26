@@ -25,17 +25,8 @@ public:
 	void popTail();
 	void display(int start, int end);
 	int size();
-	// metody pod sortowanie
-	Node* getMiddle(Node* tmpl, Node* tmpr);
-	Node* pivot(Node* til, Node* hed);
 	Node* getFromTail(int x);
 	Node* getFromHead(int x);
-	// ###### mergesort ######
-	void mergesort();
-	Node* mergeSort(Node* tmpl, Node* tmpr);
-	Node* merge(Node* left, Node* right);
-	Node* split(Node* tmpl, Node* tmpr);
-
 };
 
 void assignment(DoublyLinkedList &lista, int limit);
@@ -45,10 +36,10 @@ void Swap(Node* n1, Node* n2);
 
 void quicksort(DoublyLinkedList& lista);
 Node* partition(Node* start, Node* end);
-void quick_sort();
+void quick_sort(Node* head, Node* tail);
 
-void merge(Node* left, Node* middle, Node* right);
-void merge_sort(Node* left, Node* right);
 void mergesort(DoublyLinkedList& lista);
+void merge_sort(Node* left, Node* right);
+void merge(Node* left, Node* middle, Node* right);
 
 void bucketsort(DoublyLinkedList& lista);

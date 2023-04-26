@@ -9,17 +9,18 @@ using namespace std;
 // TAIL (poczatek) -> HEAD (koniec)
 
 int main() {
-	// ---------MERGESORT----------
-	// dla 20k elementow: 0.834, 0.796, 0.893
-	// dla 35k elementow: 2.206, 2.283, 2.255
-	// dla 400k elementow: 1390.89
+
+	// 10k, 100k, 250k, 500k (wszystkie elementy)
 
 	DoublyLinkedList lista;
-	assignment(lista, 2500);
+	assignment(lista, 500000);
+	////lista.display(0, 19);
+	//cout << "--------------" << endl;
 	clock_t start = clock();
-	mergesort(lista);
+	bucketsort(lista);
 	clock_t stop = clock();
-	//cout << measure_time(start, stop, lista.size(), 'm') << endl;
+	////lista.display(0, 19);
+	cout << measure_time(start, stop, lista.size(), 'b') << endl;
 	check_list(lista);
 
 
